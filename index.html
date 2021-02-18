@@ -10,14 +10,14 @@
     <script src="https://kit.fontawesome.com/553d3da925.js" crossorigin="anonymous"></script>
   <title>Weather App</title>
 </head>
-<body background="rainy.png">
+<body>
   <div class="container">
     
     <div class="container-md my-3">
       <div class="row">
         <div class="col-8" id= "weather">
-         <div class="p-3 bg-light border">
-            <h1>
+         <div class="p-3 bg-lighter border">
+            <h1 id="display-city">
               San Francisco
             </h1>
             <p>
@@ -31,26 +31,27 @@
             <div class="d-grid gap-2 col-8 mx-auto">
               <div class="row">
                 <div class= "col-4">
-                  <div class="weather" id="current-temperature">
-                    <h3>
-                    9
-                    <span>•C|F</span>
-                    </h3>
+                  <div class="weather">
+                    <i class="fas fa-sun"></i>
+                    <h2 class="text-center" id="current-temperature">
+                      9<span class="degree">•</span></h2>
+                      <span id="units">
+                        <h4>
+                          C|F
+                        </h4>
+                      </span>
                   </div>
-                </div>
-                <div class="col-4">
-                  <i class="fas fa-sun"></i>
                 </div>
               </div>
             </div>
             <ul>
-              <li>
+              <li id="percipitation">
                 Percipitation: 2%
               </li>
-              <li>
+              <li id="humidity">
                 Humidity: 85%
               </li>
-              <li>
+              <li id="wind">
                 Wind: 11 km/h
               </li>
             </ul>
@@ -58,117 +59,97 @@
         </div>
         <div class="d-grid gap-2 col-4 mx-auto">
           <form class="row g-3">
-              <div class="col-auto mb-2 pt-4">
-                <input type="text" id="search-city" class="form-control" placeholder="Search City">
-              </div>
-              <div class="col-auto mb-2 pt-4">
-                <button type="submit" class="btn btn-primary" id="search-city-btn">Go</button>
-              </div>
+            <div class="col-auto mb-2 pt-4">
+              <input type="text" id="search-city" class="form-control" placeholder="Search City">
+            </div>
+            <div class="col-auto mb-2 pt-4">
+              <button type="submit" class="btn btn-warning" id="search-city-btn">Go</button>
+            </div>
           </form>
-        
+        <div class="d-flex align-items-start">
           <div class="mx-4 ps-3 pt-0">
-            <button class="btn btn-primary " type="submit" id="current-city-btn">
+            <button class="btn btn-warning" type="submit" id="current-city-btn">
               Current City
             </button>
           </div>
         </div>
       </div>
     </div>
+  </br>
+    <div class="col" id="five-day-forecast"> 
+      <div class="p-3 bg-light border">
 
-  <div class="col-auto" id="five-day-forecast"> 
-    <div class="p-3 bg-light border">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2">
-            <div class="card w-20">
-              <div class="card-header" id="one-plus-day">
-                Monday
-              </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>15•</p>
-                    <p>
-                      <i class="fas fa-sun"></i>
-                    </p>
-                  </blockquote>
+        <div class="container ">
+          <div class="row">
+
+            <div class="col-sm-3">
+              <div class="card w-10">
+                <div class="card-header" id="one-plus-day">
+                  Mon
                 </div>
-            </div>
-            One of three columns
-          </div>
-
-          <div class="col-sm-2">
-            <div class="card w-20">
-              <div class="card-header" id="two-plus-day">
-                Tuesday
-              </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>15•</p>
-                    <p>
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <p>15•</p>
                       <i class="fas fa-sun"></i>
-                    </p>
-                  </blockquote>
+                    </blockquote>
+                  </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="card w-10">
+                <div class="card-header" id="two-plus-day">
+                  Tues
                 </div>
-            </div>
-            TWO of three columns
-          </div>
-
-          <div class="col-sm-2">
-            <div class="card w-20">
-              <div class="card-header" id="three-plus-day">
-                Wednesday
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <p>15•</p>
+                        <i class="fas fa-sun"></i>
+                    </blockquote>
+                  </div>
               </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>15•</p>
-                    <p>
-                      <i class="fas fa-sun"></i>
-                    </p>
-                  </blockquote>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="d-inline justify-content-center">
+                <div class="card w-10">
+                  <div class="card-header" id="three-plus-day">
+                    Wed
+                  </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote mb-0">
+                        <p>15•</p>
+                          <i class="fas fa-sun"></i>
+                      </blockquote>
+                    </div>
                 </div>
-            </div>
-            THREE of three columns
-          </div>
-
-          <div class="col-sm-2">
-            <div class="card w-20">
-              <div class="card-header" id="four-plus-day">
-                Thursday
               </div>
-                <div class="card-body">
-                  <blockquote class="blockquote mb-0">
-                    <p>15•</p>
-                    <p>
-                      <i class="fas fa-sun"></i>
-                    </p>
-                  </blockquote>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="card w-15">
+                <div class="card-header" id="four-plus-day">
+                  Thurs
                 </div>
-            </div>
-            FOUR of three columns
-          </div>
-
-          <div class="col-sm-2">
-            <div class="card w-20">
-              <div class="card-header" id="five-plus-day">
-                Friday
-              </div>
-              <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                  <p>15•</p>
-                  <p>
-                    <i class="fas fa-sun"></i>
-                  </p>
-                </blockquote>
+                  <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                      <p>15•</p>
+                        <i class="fas fa-sun"></i>
+                    </blockquote>
+                  </div>
               </div>
             </div>
-            FIVE of three columns
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
+      <p class="text-center">
+        <a href="https://github.com/cbruzelius/Vanilla-Weather-App" target="blank">
+          Open source-code
+        </a>
+        by Cari Bruzelius
+      </p>
   </div>
 
   <script src="src/app.js"></script> 

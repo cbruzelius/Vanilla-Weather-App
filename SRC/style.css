@@ -1,0 +1,8 @@
+body {
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+}
+h1 {
+  font-size: larger;
+  color: #726a95;
+  text-align: center;
+}
