@@ -1,8 +1,53 @@
 body {
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background-size: 100;
+  color: #403e47;
 }
-h1 {
-  font-size: larger;
+
+h2 {
+  font-size: 90px;
+}
+
+p {
+  font-size: 16px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+li {
+  font-size: 14px;
+  display: inline;
+  padding: 1rem;
+}
+
+.city {
+  font-size: 28px;
+  font-weight: 600;
   color: #726a95;
   text-align: center;
+}
+
+.fas {
+  font-size: 28px;
+}
+
+.temperature {
+  font-size: 45px;
+}
+
+.symbol {
+  font-size: 45px;
+}
+.degree {
+  font-size: 45px;
+  text-align: start;
+}
+
+.units {
+  font-size: 20px;
+  position: relative;
 }

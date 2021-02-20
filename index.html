@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="src/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/553d3da925.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/553d3da925.js" crossorigin="anonymous"></script>
   <title>Weather App</title>
 </head>
 <body>
@@ -15,9 +15,9 @@
     
     <div class="container-md my-3">
       <div class="row">
-        <div class="col-8" id= "weather">
-         <div class="p-3 bg-lighter border">
-            <h1 id="display-city">
+        <div class="col-8">
+         <div class="shadow p-3 bg-light rounded-3 border border-2 border-light">
+            <h1 class="city" id="display-city">
               San Francisco
             </h1>
             <p>
@@ -28,22 +28,14 @@
                 9:30pm
               </span>
             </p>
-            <div class="d-grid gap-2 col-8 mx-auto">
-              <div class="row">
-                <div class= "col-4">
-                  <div class="weather">
-                    <i class="fas fa-sun"></i>
-                    <h2 class="text-center" id="current-temperature">
-                      9<span class="degree">•</span></h2>
-                      <span id="units">
-                        <h4>
-                          C|F
-                        </h4>
-                      </span>
-                  </div>
-                </div>
+          <div class="d-grid gap-2 col-8 mx-auto">
+            <div class="row">
+              <div class= "col-10 text-center">
+                  <i class="symbol fas fa-sun text-center" id="weather-symbol"></i>
+                  <span class="temperature text-center" id="current-temperature">62</span><span class="units align-top">° <a href="">C</a> | <a href="">F</a> </span>
               </div>
             </div>
+          </div>
             <ul>
               <li id="percipitation">
                 Percipitation: 2%
@@ -57,18 +49,19 @@
             </ul>
           </div>
         </div>
-        <div class="d-grid gap-2 col-4 mx-auto">
-          <form class="row g-3">
-            <div class="col-auto mb-2 pt-4">
-              <input type="text" id="search-city" class="form-control" placeholder="Search City">
-            </div>
+
+        <div class="search d-grid gap-2 col-4 mx-auto">
+          <form class="row gd-2">
+              <div class="col-auto mb-2 pt-4"> 
+                 <input type="text" id="search-city" class="form-control border-warning" placeholder="Search City">
+              </div>
             <div class="col-auto mb-2 pt-4">
               <button type="submit" class="btn btn-warning" id="search-city-btn">Go</button>
             </div>
           </form>
         <div class="d-flex align-items-start">
           <div class="mx-4 ps-3 pt-0">
-            <button class="btn btn-warning" type="submit" id="current-city-btn">
+            <button class="btn btn-warning text-center" type="submit" id="current-city-btn">
               Current City
             </button>
           </div>
@@ -79,18 +72,18 @@
     <div class="col" id="five-day-forecast"> 
       <div class="p-3 bg-light border">
 
-        <div class="container ">
+        <div class="container">
           <div class="row">
 
             <div class="col-sm-3">
               <div class="card w-10">
-                <div class="card-header" id="one-plus-day">
-                  Mon
+                <div class="weekday card-header text-center" id="one-plus-day">
+                      Mon                    
                 </div>
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <blockquote class="blockquote mb-0">
-                      <p>15•</p>
-                      <i class="fas fa-sun"></i>
+                      <p id="temp-day-one">15•</p>
+                      <i class="fas fa-sun" id="symbol-day-one"></i>
                     </blockquote>
                   </div>
               </div>
@@ -98,13 +91,13 @@
 
             <div class="col-sm-3">
               <div class="card w-10">
-                <div class="card-header" id="two-plus-day">
+                <div class="weekday card-header text-center" id="two-plus-day">
                   Tues
                 </div>
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <blockquote class="blockquote mb-0">
-                      <p>15•</p>
-                        <i class="fas fa-sun"></i>
+                      <p id="temp-day-two">15•</p>
+                        <i class="fas fa-sun" id="symbol-day-two"></i>
                     </blockquote>
                   </div>
               </div>
@@ -113,13 +106,13 @@
             <div class="col-sm-3">
               <div class="d-inline justify-content-center">
                 <div class="card w-10">
-                  <div class="card-header" id="three-plus-day">
+                  <div class="weekday card-header text-center" id="three-plus-day">
                     Wed
                   </div>
-                    <div class="card-body">
-                      <blockquote class="blockquote mb-0">
-                        <p>15•</p>
-                          <i class="fas fa-sun"></i>
+                    <div class="card-body text-center">
+                      <blockquote class="blockquote mb-0 text-center">
+                        <p id="temp-day-three">15•</p>
+                          <i class="fas fa-sun" id="symbol-day-three"></i>
                       </blockquote>
                     </div>
                 </div>
@@ -128,13 +121,13 @@
 
             <div class="col-sm-3">
               <div class="card w-15">
-                <div class="card-header" id="four-plus-day">
+                <div class="weekday card-header text-center" id="four-plus-day">
                   Thurs
                 </div>
-                  <div class="card-body">
+                  <div class="card-body text-center">
                     <blockquote class="blockquote mb-0">
-                      <p>15•</p>
-                        <i class="fas fa-sun"></i>
+                      <p id="temp-day-four">15•</p>
+                        <i class="fas fa-sun" id="symbol-day-four"></i>
                     </blockquote>
                   </div>
               </div>
