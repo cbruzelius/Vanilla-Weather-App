@@ -1,3 +1,4 @@
+//current date//
 let now = new Date();
 now.getDay();
 now.getHours();
@@ -32,7 +33,6 @@ currentDT.innerHTML= `${day} ${localTime}`;
 
 //Display Temperature//
 function displayTemperature(response){
-  console.log(response.data);
   let defaultTemp= Math.round(response.data.main.temp);
   let defaultCity= response.data.name
   let defaultDescription= response.data.weather[0].description;
@@ -58,14 +58,29 @@ function displayTemperature(response){
 
 }
 
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
+  let city = "Sunnyvale";
+  let units = "metric";
+  let apiURL = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
+  
+  axios.get(apiURL).then(displayTemperature);
 
-let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
-let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
-let city = "Sunnyvale"
-let units = "metric";
-let apiURL = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
+function search (city){
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
+  let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
+  let units = "metric";
+  let apiURL = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
+  
+  axios.get(apiURL).then(displayTemperature);
+}
 
-axios.get(apiURL).then(displayTemperature);
+function recievesCity(event){
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-city");
+  search(cityInput.value);
+}
 
 
-
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", recievesCity)

@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   color: #403e47;
   text-align: center;
@@ -15,7 +15,7 @@ h2 {
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   color: #403e47;
 }
@@ -26,10 +26,21 @@ ul {
 }
 
 li {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 400;
   display: inline;
   padding: 1rem;
   color: #403e47;
+}
+
+.forecast {
+  background-image: linear-gradient(
+    to top,
+    #bdbce2 0%,
+    #c0bff0 18%,
+    #afaedb 82%,
+    #bdb7e2 100%
+  );
 }
 
 #city {
@@ -55,9 +66,26 @@ li {
   position: relative;
 }
 
+.four-day {
+  background-image: linear-gradient(
+    to top,
+    #bdbce2 0%,
+    #c0bff0 18%,
+    #a3a2db 62%,
+    #afaedb 82%,
+    #bdb7e2 100%
+  );
+}
+
 .weekday {
   font-weight: bolder;
   color: #403e47;
+  background-image: linear-gradient(
+    to top,
+    #f7e29c 0%,
+    #fae7ab 50%,
+    #f8c146 100%
+  );
 }
 
 .daily-temp {
@@ -69,5 +97,6 @@ li {
   font-size: 30px;
 }
 .descriptor {
-  margin-left: 15%;
+  text-align: left;
+  margin-left: 10%;
 }
