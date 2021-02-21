@@ -1,5 +1,13 @@
 body {
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  color: #403e47;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #403e47;
+  text-align: center;
 }
 
 h2 {
@@ -24,14 +32,12 @@ li {
   color: #403e47;
 }
 
-.city {
+#city {
   font-size: 28px;
   font-weight: 600;
-  color: #726a95;
-  text-align: center;
 }
 
-.temperature {
+.default-temperature {
   font-size: 45px;
 }
 
@@ -61,4 +67,7 @@ li {
 
 .daily-symbol {
   font-size: 30px;
+}
+.descriptor {
+  margin-left: 15%;
 }

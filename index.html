@@ -19,29 +19,27 @@
       <div class="row">
         <div class="col-6">
          <div class="shadow p-3 bg-light rounded-3 border border-2 border-light">
-            <h1 class="city" id="display-city">
-              San Francisco
+            <h1 class="city-displayed" id="city">
             </h1>
-            <p class="DT" id="current-DT">
-                Wednesday 9:30pm            
+            <p class="DT" id="current-DT">            
             </p>
           <div class="d-grid gap-2 col-8 mx-auto">
             <div class="row">
               <div class= "col-10 text-center">
-                  <i class="symbol fas fa-sun text-center" id="weather-symbol"></i>
-                  <span class="default-temperature text-center" id="temperature">60</span><span class="units align-top" id=degree>° <a href="">C</a> | <a href="">F</a></span>
+                  <img src="" alt="" class="symbol text-center" id="weather-icon">
+                  <span class="default-temperature text-center" id="temperature"></span><span class="units align-top" id=degree>° <a href="">C</a> | <a href="">F</a></span>
               </div>
-            </div>
+            </div> 
+              <p class="descriptor" id="description">
+                <strong> </strong>
+              </p>
           </div>
             <ul>
-              <li id="percipitation">
-                Percipitation: 2%
+              <li>
+                Humidity: <span id="humidity"></span>%
               </li>
-              <li id="humidity">
-                Humidity: 85%
-              </li>
-              <li id="wind">
-                Wind: 11 km/h
+              <li>
+                Wind: <span id="wind"></span> km/h
               </li>
             </ul>
           </div>
