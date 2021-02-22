@@ -30,17 +30,21 @@ let localTime = formatAMPM(now);
 let currentDT=document.querySelector("#current-DT");
 currentDT.innerHTML= `${day} ${localTime}`;
 
+let celsiusTemperature=null;
 
-//Display Temperature//
+//Display Default Temperature//
+setTemperature();
+
 function displayTemperature(response){
-  let defaultTemp= Math.round(response.data.main.temp);
-  let defaultCity= response.data.name
-  let defaultDescription= response.data.weather[0].description;
-  let defaultHumidity= response.data.main.humidity;
-  let defaultWind= Math.round(response.data.wind.speed);
-  let defaultIcon=response.data.weather[0].icon;
- 
- 
+  celsiusTemperature=response.data.main.temp;
+  
+  let temperature= Math.round(celsiusTemperature);
+  let city= response.data.name
+  let description= response.data.weather[0].description;
+  let humidity= response.data.main.humidity;
+  let wind= Math.round(response.data.wind.speed);
+  let icon=response.data.weather[0].icon;
+
   let temperatureElement=document.querySelector("#temperature");
   let cityElement=document.querySelector("#city");
   let descriptionElement=document.querySelector("#description");
@@ -48,16 +52,16 @@ function displayTemperature(response){
   let windElement=document.querySelector("#wind");
   let iconElement=document.querySelector("#weather-icon");
   
-  temperatureElement.innerHTML=`${defaultTemp}`;
-  cityElement.innerHTML=`${defaultCity}`;
-  descriptionElement.innerHTML=`${defaultDescription}`;
-  humidityElement.innerHTML=`${defaultHumidity}`;
-  windElement.innerHTML=`${defaultWind}`;
-  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${defaultIcon}@2x.png`);
-  iconElement.setAttribute("alt", `${defaultIcon}`);
-
+  temperatureElement.innerHTML=`${temperature}`;
+  cityElement.innerHTML=`${city}`;
+  descriptionElement.innerHTML=`${description}`;
+  humidityElement.innerHTML=`${humidity}`;
+  windElement.innerHTML=`${wind}`;
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${icon}@2x.png`);
+  iconElement.setAttribute("alt", `${icon}`);
 }
 
+function setTemperature(){
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
   let city = "Sunnyvale";
@@ -65,6 +69,33 @@ function displayTemperature(response){
   let apiURL = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
   
   axios.get(apiURL).then(displayTemperature);
+}
+
+//Change Units with Link//
+function displayFahrenheit(event){
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement=document.querySelector("#temperature")
+  temperatureElement.innerHTML=Math.round (((celsiusTemperature) * 1.8) + 32);
+
+  
+}
+
+let fahrenheitLink=document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheit)
+
+function displayCelsius(event){
+  event.preventDefault();
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+
+  let temperatureElement=document.querySelector("#temperature")
+  temperatureElement.innerHTML= Math.round(celsiusTemperature);
+}
+
+let celsiusLink =document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsius)
 
   //Search City//
 function search (city){
@@ -76,20 +107,23 @@ function search (city){
   axios.get(apiURL).then(displayTemperature);
 }
 
-function recievesCity(event){
+function receivesCity(event){
   event.preventDefault();
   let cityInput = document.querySelector("#search-city");
   search(cityInput.value);
 }
+
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", recievesCity)
+form.addEventListener("submit", receivesCity)
 
 //Current City//
 function getCurrentWeather(event){
   event.preventDefault();
 
   function displayPosition(response){
-  let localTemp= Math.round(response.data.main.temp);
+  celsiusTemperature=response.data.main.temp;
+  
+  let localTemp= Math.round(celsiusTemperature);
   let localCity=response.data.name;
   let localDescription= response.data.weather[0].description;
   let localHumidity= response.data.main.humidity;
@@ -127,7 +161,6 @@ function showPosition(position){
 navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-
 let currentLocalWeather = document.querySelector("#current-city");
-currentLocalWeather.addEventListener("click", getCurrentWeather);
+currentLocalWeather.addEventListener("click", getCurrentWeather)
 

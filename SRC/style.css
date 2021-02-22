@@ -1,23 +1,19 @@
 body {
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-  color: #403e47;
+  color: #390e69;
 }
 
 h1 {
   font-size: 32px;
   font-weight: 600;
-  color: #403e47;
+  color: #390e69;
   text-align: center;
-}
-
-h2 {
-  font-size: 90px;
 }
 
 p {
   font-size: 18px;
   text-align: center;
-  color: #403e47;
+  color: #390e69;
 }
 
 ul {
@@ -30,7 +26,7 @@ li {
   font-weight: 400;
   display: inline;
   padding: 1rem;
-  color: #403e47;
+  color: #390e69;
 }
 
 .forecast {
@@ -43,27 +39,27 @@ li {
   );
 }
 
-#city {
+.city-displayed {
   font-size: 28px;
   font-weight: 600;
 }
 
 .default-temperature {
-  font-size: 45px;
+  font-size: 70px;
+  font-weight: 500;
+  color: #390e69;
 }
 
 .symbol {
   font-size: 45px;
   margin-left: 15%;
-}
-.degree {
-  font-size: 45px;
-  text-align: start;
+  margin-bottom: 10%;
 }
 
 .units {
   font-size: 20px;
-  position: relative;
+  text-align: start;
+  vertical-align: 30px;
 }
 
 .four-day {
@@ -79,7 +75,7 @@ li {
 
 .weekday {
   font-weight: bolder;
-  color: #403e47;
+  color: #390e69;
   background-image: linear-gradient(
     to top,
     #f7e29c 0%,
@@ -99,4 +95,15 @@ li {
 .descriptor {
   text-align: left;
   margin-left: 10%;
+  vertical-align: 25px;
+}
+
+.active {
+  color: #390e69;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  text-decoration: none;
+  color: #390e69;
 }
