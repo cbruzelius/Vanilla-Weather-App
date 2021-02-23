@@ -97,15 +97,17 @@ function displayCelsius(event){
 let celsiusLink =document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius)
 
+
   //Search City//
 function search (city){
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
   let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
   let units = "metric";
   let apiURL = `${apiEndpoint}q=${city}&units=${units}&appid=${apiKey}`;
-  
+
   axios.get(apiURL).then(displayTemperature);
 }
+
 
 function receivesCity(event){
   event.preventDefault();
@@ -147,6 +149,10 @@ function getCurrentWeather(event){
   iconElement.setAttribute("alt", `${localIcon}`);
 }
 
+function displayForecast(response){
+  console.log (response.data)
+}
+
 function showPosition(position){
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?";
     let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
@@ -156,6 +162,12 @@ function showPosition(position){
     let localApiURL = `${apiEndpoint}lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
   
     axios.get(localApiURL).then(displayPosition);
+
+    let apiEndpointForecast = "https://api.openweathermap.org/data/2.5/onecall?";
+    let exclude = "minutely, hourly, alerts";
+    let apiURLForecast= `${apiEndpointForecast}lat=${latitude}&lon=${longitude}&exclude=${exclude}&units${units}&appid=${apiKey}`;
+
+  axios.get(apiURLForecast).then(displayForecast);
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
@@ -163,4 +175,6 @@ navigator.geolocation.getCurrentPosition(showPosition);
 
 let currentLocalWeather = document.querySelector("#current-city");
 currentLocalWeather.addEventListener("click", getCurrentWeather)
+
+//four day weather forecast//
 
