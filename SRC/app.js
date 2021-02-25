@@ -31,8 +31,6 @@ let currentDT=document.querySelector("#current-DT");
 currentDT.innerHTML= `${day} ${localTime}`;
 
 let celsiusTemperature=null;
-let forecastLatitude=null;
-let forecastLongitude=null;
 
 //Display Default Temperature//
 setTemperature();
@@ -41,14 +39,12 @@ function displayTemperature(response){
   
   celsiusTemperature=response.data.main.temp;
 
-  
   let temperature= Math.round(celsiusTemperature);
   let city= response.data.name
   let description= response.data.weather[0].description;
   let humidity= response.data.main.humidity;
   let wind= Math.round(response.data.wind.speed);
   let icon=response.data.weather[0].icon;
-  
 
   let temperatureElement=document.querySelector("#temperature");
   let cityElement=document.querySelector("#city");
@@ -83,7 +79,29 @@ function setTemperature(){
 }
 
   function displayForecast(response){
-    console.log (response.data)
+    console.log (response.data.list[0]);
+    let forecastElement = document.querySelector("#one-plus-day");
+    let forecast = response.data.list[0];
+    forecastElement.innerHTML=`
+    <div class="card w-2" id= "one-plus-day">
+      <div class="weekday card-header text-center">
+        
+      </div>
+      <div class="card-body text-center">
+        <h5> 
+          ${Math.round(forecast.main.temp)}°
+        </h5>
+          <p class="daily-temp">
+            <strong>
+              <span> H 17</span>° |
+            </strong>
+            <span>L 7</span>°
+          </p>
+        <img src="" alt="" class="daily-symbol">
+      </div>
+    </div>
+    `
+
   }
 
   //Search City//
@@ -99,7 +117,6 @@ function search (city){
   let apiURLForecast= `${apiEndpointForecast}q=${city}&units${units}&appid=${apiKey}`;
 
   axios.get(apiURLForecast).then(displayForecast);
-
 }
 
 function receivesCity(event){
@@ -115,9 +132,7 @@ form.addEventListener("submit", receivesCity)
 function getCurrentWeather(event){
   event.preventDefault();
   
-
   function displayPosition(response){
-    console.log(response.data)
   celsiusTemperature=response.data.main.temp;
   
   let localTemp= Math.round(celsiusTemperature);
@@ -126,8 +141,7 @@ function getCurrentWeather(event){
   let localHumidity= response.data.main.humidity;
   let localWind= Math.round(response.data.wind.speed);
   let localIcon=response.data.weather[0].icon;
- 
- 
+
   let temperatureElement=document.querySelector("#temperature");
   let cityElement=document.querySelector("#city");
   let descriptionElement=document.querySelector("#description");
@@ -191,5 +205,4 @@ function displayCelsius(event){
 let celsiusLink =document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsius)
 
-//four day weather forecast//
 
