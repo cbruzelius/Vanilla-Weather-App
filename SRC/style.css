@@ -9,6 +9,12 @@ h1 {
   color: #390e69;
   text-align: center;
 }
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #390e69;
+  text-align: center;
+}
 
 p {
   font-size: 18px;
@@ -85,12 +91,13 @@ li {
 }
 
 .daily-temp {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .daily-symbol {
   font-size: 30px;
+  text-align: center;
 }
 .descriptor {
   text-align: left;
