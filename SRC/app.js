@@ -38,7 +38,6 @@
     return `${day}, ${month} ${date}, ${year}  ${strTime}`;
   }
 
-
  function formatHours(timestamp){
      let now = new Date(timestamp);
 
@@ -55,11 +54,7 @@
 let celsiusTemperature=null;
 
 //Display Default Temperature//
-
-
 function displayTemperature(response){
-  console.log(response.data);
-
   celsiusTemperature=response.data.main.temp;
 
   document.querySelector("#temperature").innerHTML=Math.round(celsiusTemperature);
@@ -69,16 +64,14 @@ function displayTemperature(response){
   document.querySelector("#wind").innerHTML=Math.round(response.data.wind.speed);
   document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#weather-icon").setAttribute("alt", `${response.data.weather[0].icon}`)
-  document.querySelector("#current-DT").innerHTML=formatDate(response.data.dt+response.data.timezone*1000);
+  document.querySelector("#current-DT").innerHTML=formatDate(response.data.dt*1000);
 }
 
 function displayForecast(response){
-  
   let forecastElement = document.querySelector("#one-plus-day");
   let forecast=null;
   forecastElement.innerHTML=null;
   
-
   for (let index = 0; index < 4; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
@@ -106,7 +99,7 @@ function displayForecast(response){
   }
 }
 
-  //Search City//
+//Search City//
 let cityElement=null;
 
 function search(city){
@@ -125,19 +118,16 @@ function receiveCity(event){
  event.preventDefault();
  cityElement=document.querySelector("#city-input");
 
- search(cityElement.value);
- reset();
+ search(cityElement.value); 
+ 
+ cityElement.innerHTML=reset(event);
 }
 
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", receiveCity)
-
+var form = document.querySelector("#search-form");
+form.addEventListener("submit",receiveCity)
+ 
 //Get Current City//
-
 function showPosition(position){
-    console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
-
   let apiKey = "7810de17cb3e4ad4b94e69a98fbe80a0";
   let localApiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric&appid=${apiKey}`;
   let apiURLForecast= `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
